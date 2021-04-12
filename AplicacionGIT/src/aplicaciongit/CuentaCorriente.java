@@ -5,6 +5,9 @@
  */
 package aplicaciongit;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author nachovelagomez
@@ -15,12 +18,14 @@ public class CuentaCorriente {
     private String nombre; 
     private String DNI; 
     private double limiteRojos;
+    private List<Tarjeta> tarjetas;
 
     public CuentaCorriente(String nombre, String DNI) {
         this.nombre = nombre;
         this.DNI = DNI;
         this.saldo = 0; 
         this.limiteRojos = -50; 
+        this.tarjetas = new ArrayList<Tarjeta>();
     }
 
     public CuentaCorriente(double saldo) {
@@ -46,5 +51,14 @@ public class CuentaCorriente {
     public void ingresarDinero(int dineroaingresar){
         this.saldo = this.saldo + dineroaingresar; 
     }
-
+    
+    public boolean nuevaTarjeta(){
+        if (this.saldo >= 0 ){
+            Tarjeta tarjeta = new Tarjeta(this.nombre, "2847", 7362);
+            this.tarjetas.add(tarjeta);
+            return true; 
+        }
+        return false;
+        
+    }
 }
