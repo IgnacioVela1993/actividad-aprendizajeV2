@@ -14,15 +14,13 @@ import java.util.List;
  */
 public class CuentaCorriente {
     
+    private Cliente cliente;
     private double saldo; 
-    private String nombre; 
-    private String DNI; 
     private double limiteRojos;
     private List<Tarjeta> tarjetas;
 
-    public CuentaCorriente(String nombre, String DNI) {
-        this.nombre = nombre;
-        this.DNI = DNI;
+    public CuentaCorriente(Cliente cliente) {
+        this.cliente = cliente; 
         this.saldo = 0; 
         this.limiteRojos = -50; 
         this.tarjetas = new ArrayList<Tarjeta>();
@@ -33,9 +31,9 @@ public class CuentaCorriente {
         this.limiteRojos = 0;
     }
 
-    public CuentaCorriente(double saldo, String DNI, double limiteRojos) {
+    public CuentaCorriente(Cliente cliente,double saldo, double limiteRojos) {
         this.saldo = saldo;
-        this.DNI = DNI;
+        this.cliente = cliente; 
         this.limiteRojos = limiteRojos;
     }
     
@@ -54,7 +52,7 @@ public class CuentaCorriente {
     
     public boolean nuevaTarjeta(){
         if (this.saldo >= 0 ){
-            Tarjeta tarjeta = new Tarjeta(this.nombre, "2847", 7362);
+            Tarjeta tarjeta = new Tarjeta(this.cliente.getNombre(), "2847", 7362);
             this.tarjetas.add(tarjeta);
             return true; 
         }
