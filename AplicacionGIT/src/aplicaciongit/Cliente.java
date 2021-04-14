@@ -6,6 +6,7 @@
 package aplicaciongit;
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
  *
@@ -45,6 +46,32 @@ public class Cliente {
     public void setFe_nacimiento(Date fe_nacimiento) {
         this.fe_nacimiento = fe_nacimiento;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 79 * hash + Objects.hashCode(this.nombre);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Cliente other = (Cliente) obj;
+        if (!Objects.equals(this.nombre, other.nombre)) {
+            return false;
+        }
+        return true;
+    }
+    
     
    
 }
